@@ -136,7 +136,7 @@ See the full [Materials List (Google Sheets)](https://docs.google.com/spreadshee
 ## 🔗 License
 
 MIT License  
-(c) Your Name or Project Contributors
+(c) Aiden So
 
 ---
 
