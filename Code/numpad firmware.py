@@ -1,6 +1,6 @@
 import storage
 # Disable USB drive to prevent CircuitPython from mounting as a storage device
-storage.disable_usb_drive()
+#storage.disable_usb_drive()
 from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keycode import Keycode
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
