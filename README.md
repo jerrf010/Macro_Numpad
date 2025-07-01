@@ -117,6 +117,7 @@ See the full [Materials List (Google Sheets)](https://docs.google.com/spreadshee
 | 5 | M3 x 16mm Flat Head Screws (50 pcs) | AliExpress | 3.90 | |
 | 6 | M3 Brass Knurled Heat Inserts (4.5mm OD, 4mm L, 50 pcs) | AliExpress | 2.47 | For 3D case |
 | 7 | WS2812B Led Lights DC5V WS2812 RGB Led Strip | AliExpress | 4.86 | |
+| 8 | Keycaps (any mx keycap will do) | Amazon.ca | 13-19 | |
 |   | **Total** | | **45.90** | (Approx., varies by supplier) |
 
 ---
