@@ -116,11 +116,8 @@ See the full [Materials List (Google Sheets)](https://docs.google.com/spreadshee
 | 4 | Number Keypad PBT Keycaps (17 keys, Sunset theme) | AliExpress | 16.37 | 3 Front Printed |
 | 5 | M3 x 16mm Flat Head Screws (50 pcs) | AliExpress | 3.90 | |
 | 6 | M3 Brass Knurled Heat Inserts (4.5mm OD, 4mm L, 50 pcs) | AliExpress | 2.47 | For 3D case |
-| 7 | DX-BT26 HID+BLE Bluetooth Module | AliExpress | 12.30 | Optional wireless |
-| 8 | TP4056 Type-C Li-ion Charger (5pcs) | AliExpress | 2.00 | For battery |
-| 9 | 18650 Rechargeable Li-ion Battery (2-pack, 3300mAh) | Amazon | 20.50 | For wireless use |
-| 10 | LM393P OpAmp (DIP8) | AliExpress | 1.74 | |
-|   | **Total** | | **41.04** | (Approx., varies by supplier) |
+| 7 | WS2812B Led Lights DC5V WS2812 RGB Led Strip | AliExpress | 4.86 | |
+|   | **Total** | | **45.90** | (Approx., varies by supplier) |
 
 ---
 
