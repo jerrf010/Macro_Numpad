@@ -1,6 +1,6 @@
 import storage
 # Disable USB drive to prevent CircuitPython from mounting as a storage device
-#storage.disable_usb_drive()
+storage.disable_usb_drive()
 from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keycode import Keycode
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
@@ -12,6 +12,7 @@ import random
 import math
 import usb_hid
 import neopixel
+import os
 
 kbd = Keyboard(usb_hid.devices)
 layout = KeyboardLayoutUS(kbd)
@@ -87,13 +88,20 @@ def save_effect_mode(mode):
     try:
         with open(effect_file, "w") as f:
             f.write(str(mode))  # Write the mode as a string
+            f.flush()  # Ensure data is written immediately
+        
+        if hasattr(os, 'sync'):
+            os.sync()
+
     except OSError as e:
         print("Failed to save effect mode:", e)
 
 def load_effect_mode():
     try:
         with open(effect_file, "r") as f:
-            return int(f.read().strip())  # Read the mode as an integer
+            val = int(f.read().strip())
+            print("Loaded effect mode:", val)
+            return val
     except (OSError, ValueError):
         return 0  # Default to 0 if file doesn't exist or is invalid
 
@@ -377,14 +385,13 @@ while True:
         if effect_mode != 0:
             prev_effect = effect_mode
             effect_mode = 0
-            save_effect_mode(effect_mode)
             update_effect()
 
     for i, button in enumerate(buttons):
         pressed = not button.value
         action = actions[i]
 
-        # Button just pressed
+        # Button just pressedf
         if pressed and states[i]:
             last_activity = now
             states[i] = False
