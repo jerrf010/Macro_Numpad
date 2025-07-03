@@ -1,6 +1,6 @@
 import storage
 # Disable USB drive to prevent CircuitPython from mounting as a storage device
-storage.disable_usb_drive()
+#storage.disable_usb_drive()
 from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keycode import Keycode
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
@@ -402,6 +402,7 @@ while True:
                 save_effect_mode(effect_mode)
                 update_effect()
                 prev_effect = None
+                # Don't continue; let the button's action run below!
 
             if i == slash_index:
                 slash_timer = now
