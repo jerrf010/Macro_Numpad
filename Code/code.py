@@ -6,6 +6,7 @@ from kmk.scanners.keypad import KeysScanner
 from kmk.extensions.RGB import RGB, AnimationModes
 from kmk.modules.macros import Macros, Press, Release, Tap, Delay
 from kmk.modules.holdtap import HoldTap
+from kmk.modules.layers import Layers
 
 # --- Modules ---
 macros = Macros()
@@ -18,7 +19,7 @@ rgb = RGB(
 )
 
 # --- Idle RGB Config ---
-IDLE_TIMEOUT = 10  # seconds before turning RGB off
+IDLE_TIMEOUT = 20  # seconds before turning RGB off
 last_activity_time = time.monotonic()
 rgb_on = True
 
@@ -50,14 +51,7 @@ F2 = KC.MACRO(
     Release(KC.LCTRL),
 )
 
-# --- HoldTap Keys ---
-RGB_Toggle = KC.HT(F1, KC.RGB_TOG)
-RGB_Breath = KC.HT(KC.P1, KC.RGB_MODE_BREATHE)
-RGB_Rainbow = KC.HT(KC.P2, KC.RGB_MODE_RAINBOW)
-RGB_Breathe_Rainbow = KC.HT(KC.P3, KC.RGB_MODE_BREATHE_RAINBOW)
-RGB_Knight = KC.HT(KC.P4, KC.RGB_MODE_KNIGHT)
-RGB_Swirl = KC.HT(KC.P0, KC.RGB_MODE_SWIRL)
-RGB_Static = KC.HT(KC.P5, KC.RGB_MODE_PLAIN)
+
 
 # --- Keyboard ---
 class MyKeyboard(KMKKeyboard):
@@ -73,17 +67,34 @@ keyboard = MyKeyboard()
 keyboard.extensions.append(rgb)
 keyboard.modules.append(macros)
 keyboard.modules.append(holdtap)
+keyboard.modules.append(Layers())
 
+
+# --- HoldTap Keys ---
+RGB_Toggle = KC.HT(F1, KC.RGB_TOG)
+
+#DEFINE
+LAYER_TAP = KC.LT(1, KC.PSLS, prefer_hold=True, tap_interrupted=False, tap_time=200)
 # --- Keymap ---
 keyboard.keymap = [
     [
         RGB_Toggle, F2, KC.NO, KC.NO,
-        KC.NUMLOCK, KC.PSLS, KC.PAST, KC.PMNS,
-        KC.P7, KC.P8, KC.P9, RGB_Knight,
-        RGB_Static, KC.P6, KC.PPLS, RGB_Breath,
-        RGB_Rainbow, RGB_Breathe_Rainbow, KC.PENT, KC.PDOT,
-        RGB_Swirl
-    ]    
+        KC.NUMLOCK, LAYER_TAP, KC.PAST, KC.PMNS,
+        KC.P7, KC.P8, KC.P9, KC.P4,
+        KC.P5, KC.P6, KC.PPLS, KC.P1,
+        KC.P2, KC.P3, KC.PENT, KC.PDOT,
+        KC.P0,
+    ],
+
+    [
+        RGB_Toggle, KC.NO, KC.NO, KC.NO,
+        KC.NO, KC.TRNS, KC.NO, KC.NO,
+        KC.NO, KC.NO, KC.NO, KC.RGB_MODE_KNIGHT,
+        KC.RGB_MODE_PLAIN, KC.NO, KC.NO, KC.RGB_MODE_BREATHE,
+        KC.RGB_MODE_RAINBOW, KC.RGB_MODE_BREATHE_RAINBOW, KC.NO, KC.NO,
+        KC.RGB_MODE_SWIRL,
+    ]
+
 ]
 
 # --- Activity Tracking ---
